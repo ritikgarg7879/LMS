@@ -4,16 +4,16 @@ const { v4: uuidv4 } = require('uuid');
 const router=express.Router();
 
 
-//Creating an array to add bookInfo
+
 let books=[];
 
-//Getting details of all the books
+
 router.get("/",(req,res)=>{
     res.send(books);
 })
 
 
-//Adding new books
+
 router.post("/",(req,res)=>{
     const book=req.body;
     const bookId=uuidv4();
@@ -23,7 +23,7 @@ router.post("/",(req,res)=>{
 })
 
 
-//Getting information about a particular book with the help of book id
+
 router.get("/:id",(req,res)=>{
     const {id}=req.params;
     const foundBook=books.find((book)=>book.id==id);
@@ -31,7 +31,7 @@ router.get("/:id",(req,res)=>{
 })
 
 
-//Deleting a particular book on the basis of its id 
+
 router.delete("/:id",(req,res)=>{
     const {id}=req.params;
     books=books.filter((book)=>book.id!=id);
@@ -39,7 +39,7 @@ router.delete("/:id",(req,res)=>{
 })
 
 
-//Updating the info about a particular book with the help of its id 
+
 router.patch("/:id",(req,res)=>{
     const {id}=req.params;
     const {title,author}=req.body;
