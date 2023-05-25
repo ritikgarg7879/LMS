@@ -5,11 +5,11 @@ const router=express.Router();
 
 
 
-let books=[];
+let ArrayOfbook=[];
 
 
 router.get("/",(req,res)=>{
-    res.send(books);
+    res.send(ArrayOfbooks);
 })
 
 
@@ -26,7 +26,7 @@ router.post("/",(req,res)=>{
 
 router.get("/:id",(req,res)=>{
     const {id}=req.params;
-    const foundBook=books.find((book)=>book.id==id);
+    const foundBook=ArrayOfbooks.find((book)=>book.id==id);
     res.send(foundBook);
 })
 
@@ -34,7 +34,7 @@ router.get("/:id",(req,res)=>{
 
 router.delete("/:id",(req,res)=>{
     const {id}=req.params;
-    books=books.filter((book)=>book.id!=id);
+    ArrayOfbooks=ArrayOfbooks.filter((book)=>book.id!=id);
     res.send(`Book with id ${id} is deleted`)
 })
 
@@ -43,13 +43,13 @@ router.delete("/:id",(req,res)=>{
 router.patch("/:id",(req,res)=>{
     const {id}=req.params;
     const {title,author}=req.body;
-    const bookToBeUpdated=books.find((book)=>book.id===id);
+    const Updatedbook=ArrayOfbooks.find((book)=>book.id===id);
 
     if(title){
-        bookToBeUpdated.title=title;
+        Updatedbook.title=title;
     }
     if(author){
-        bookToBeUpdated.author=author;
+        Updatedbook.author=author;
     }
 
     res.send(`user with the id ${id} updated`);
